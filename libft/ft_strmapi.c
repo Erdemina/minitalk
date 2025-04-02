@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eulutas <eulutas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/01 00:23:59 by eulutas           #+#    #+#             */
-/*   Updated: 2025/04/01 00:23:59 by eulutas          ###   ########.fr       */
+/*   Created: 2024/10/27 15:56:13 by eulutas           #+#    #+#             */
+/*   Updated: 2024/10/27 15:56:13 by eulutas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-#define MINITALK_H
+#include "libft.h"
 
-#include "./printf/ft_printf.h"
-#include "./libft/libft.h"
-#include <unistd.h>
-#include <signal.h>
-#include <stdarg.h>
-#include <stdlib.h>
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	unsigned int	i;
+	size_t			len;
+	char			*result;
 
-
-#endif
+	if (!s || !f)
+	{
+		return (NULL);
+	}
+	len = ft_strlen(s);
+	i = 0;
+	result = (char *)malloc(len + 1);
+	if (!result)
+	{
+		return (NULL);
+	}
+	while (i < len)
+	{
+		result[i] = f(i, s[i]);
+		i++;
+	}
+	result[i] = '\0';
+	return (result);
+}

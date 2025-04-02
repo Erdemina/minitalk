@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eulutas <eulutas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/01 00:23:59 by eulutas           #+#    #+#             */
-/*   Updated: 2025/04/01 00:23:59 by eulutas          ###   ########.fr       */
+/*   Created: 2024/10/29 11:27:02 by eulutas           #+#    #+#             */
+/*   Updated: 2024/10/29 11:27:02 by eulutas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-#define MINITALK_H
+#include "libft.h"
 
-#include "./printf/ft_printf.h"
-#include "./libft/libft.h"
-#include <unistd.h>
-#include <signal.h>
-#include <stdarg.h>
-#include <stdlib.h>
+void	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
 
-
-#endif
+	i = 0;
+	if (!s)
+	{
+		return ;
+	}
+	while (s[i])
+	{
+		ft_putchar_fd(s[i], fd);
+		i++;
+	}
+}

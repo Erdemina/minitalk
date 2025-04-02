@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eulutas <eulutas@student.42istanbul.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/01 00:23:59 by eulutas           #+#    #+#             */
-/*   Updated: 2025/04/01 00:23:59 by eulutas          ###   ########.fr       */
+/*   Created: 2024/10/27 15:40:18 by eulutas           #+#    #+#             */
+/*   Updated: 2024/10/27 15:40:18 by eulutas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-#define MINITALK_H
+#include "libft.h"
 
-#include "./printf/ft_printf.h"
-#include "./libft/libft.h"
-#include <unistd.h>
-#include <signal.h>
-#include <stdarg.h>
-#include <stdlib.h>
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	size_t	j;
 
-
-#endif
+	if (!s1 || !set)
+	{
+		return (0);
+	}
+	while (*s1 && ft_strchr(set, *s1))
+	{
+		s1++;
+	}
+	j = ft_strlen(s1);
+	while (j && ft_strchr(set, s1[j]))
+	{
+		j--;
+	}
+	return (ft_substr(s1, 0, j + 1));
+}
