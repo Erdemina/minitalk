@@ -11,7 +11,7 @@ static void signal_handler(int signal)
 	i++;
 	if (i == 8)
 	{
-		write(1, &chr, 1);
+		ft_printf("%c", chr);
 		i = 0;
 		chr = 0;
 	}
